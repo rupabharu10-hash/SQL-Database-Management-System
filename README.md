@@ -36,4 +36,4 @@ and customer behavior across different branches using SQL.
 - Evaluated profitability using gross income
 
 ## Author
-Your Name
+Rupa
