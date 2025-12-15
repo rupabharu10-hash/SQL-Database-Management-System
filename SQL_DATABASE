@@ -1,0 +1,62 @@
+1.TOTAL SALES BY BRANCH
+SELECT branch,
+       SUM(total) AS total_sales
+FROM amazon_sales
+GROUP BY branch;
+
+2.TOTAL SALES BY CITY
+SELECT city,
+       SUM(total) AS total_revenue
+FROM amazon_sales
+GROUP BY city;
+
+3.TOTAL SELLING PRODUCT LINES
+SELECT product_line,
+       SUM(quantity) AS total_quantity_sold
+FROM amazon_sales
+GROUP BY product_line
+ORDER BY total_quantity_sold DESC;
+
+4.Average Rating by Product Line
+SELECT product_line,
+       ROUND(AVG(rating), 2) AS avg_rating
+FROM amazon_sales
+GROUP BY product_line;
+
+5.Customer Type vs Revenue
+SELECT customer_type,
+       SUM(total) AS revenue
+FROM amazon_sales
+GROUP BY customer_type;
+
+6.Gender-wise Purchase Analysis
+SELECT gender,
+       COUNT(invoice_id) AS total_transactions,
+       SUM(total) AS total_spent
+FROM amazon_sales
+GROUP BY gender;
+
+7.Payment Method Analysis
+SELECT payment_method,
+       COUNT(*) AS transactions,
+       SUM(total) AS total_amount
+FROM amazon_sales
+GROUP BY payment_method;
+
+8.Gross Income by Branch
+SELECT branch,
+       SUM(gross_income) AS total_gross_income
+FROM amazon_sales
+GROUP BY branch;
+
+9.Sales by Date
+SELECT date,
+       SUM(total) AS daily_sales
+FROM amazon_sales
+GROUP BY date
+ORDER BY date;
+
+10.High-Value Transactions
+SELECT *
+FROM amazon_sales
+WHERE total > (SELECT AVG(total) FROM amazon_sales);
